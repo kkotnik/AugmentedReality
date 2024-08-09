@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControler : MonoBehaviour{
-
+public class CameraControler : MonoBehaviour
+{
     public GameObject player;
-    private Vector3 offset; //vektor3 je za xyz movement (kok je razlika med njima)
+    public float distanceBehind = 10.0f;
+    public float heightAbove = 5.0f;
 
-    // Start is called before the first frame update
+    private Vector3 offset;
+
     void Start(){
-        offset= transform.position-player.transform.position;
+
+        offset = new Vector3(0, heightAbove, -distanceBehind); //Vector3(x,y,z)
+
     }
 
-    // Update is called once per frame
-    //more se zgodit zadnja v frame loadu
-    void LateUpdate(){
-        // Calculate the new position based on player's position and the offset
-        Vector3 newPosition = player.transform.position + offset;
-        // Update the camera's position
-        transform.position = newPosition;
+    void Update()
+    {
 
-        // Make the camera look at the player
-        transform.LookAt(player.transform);
+        Vector3 newPosition = player.transform.position + player.transform.rotation * offset;
+        
+        transform.position = newPosition; //pozicija
+        transform.LookAt(player.transform.position); //rotacija
     }
 }
