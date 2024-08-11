@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-public class NewBehaviourScript : MonoBehaviour
+public class Radio : MonoBehaviour
 {
 
         public AudioMixer audioMixer;
@@ -21,7 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
 public void AdjustRadioVolume(float value){
     audioMixer.SetFloat("Volume", value);
 }
-    public void PlayRadio()
+public void PlayRadio()
 {
     for (int i = 0; i < radioStations.Count; i++)
     {
