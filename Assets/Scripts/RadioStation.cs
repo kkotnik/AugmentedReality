@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Radio : MonoBehaviour
+public class RadioStation : MonoBehaviour
 {
     public Sprite stationSprite;
 
@@ -46,7 +46,7 @@ public class Radio : MonoBehaviour
                 if(CurrentClipNumber >= currentStationClips.Count){
                     CurrentClipNumber = 0;
                 }
-                currentClip = currentStationClips[currentClipNumber];
+                currentClip = currentStationClips[CurrentClipNumber];
                 audioSource.clip = currentClip;
                 audioSource.Play();
             }
